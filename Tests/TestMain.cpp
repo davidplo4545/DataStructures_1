@@ -6,6 +6,7 @@
 
 namespace NewTests{
     bool genTest();
+    bool genTest1();
     //	bool testQueueMethods();
 //	bool testQueueMethods();
 //	bool testQueueMethods();
@@ -34,7 +35,7 @@ namespace WorldCupTests{
 }
 
 std::function<bool()> testsList[] = {
-        NewTests::genTest,
+        NewTests::genTest1,
 //    PlayerTests::comparePlayersTest,
 //        WorldCupTests::knockoutWinnerTest,
 //    AVLTreeTests::checkTree,

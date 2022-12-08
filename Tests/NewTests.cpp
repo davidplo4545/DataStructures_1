@@ -8,6 +8,18 @@
 #define AGREGATE_TEST_RESULT(res, cond) (res) = ((res) && (cond))
 
 namespace NewTests{
+    bool genTest1()
+    {
+        world_cup_t *obj = new world_cup_t();
+
+        obj->add_team(3, 3572);
+        obj->add_team (4 ,9788);
+        obj->add_player (3, 3, 1786, 3298 ,4255, false);
+        obj->unite_teams( 3 ,4, 4);
+        obj->remove_player( 3);
+        delete obj;
+        return true;
+    }
     bool genTest()
     {
         world_cup_t *obj = new world_cup_t();

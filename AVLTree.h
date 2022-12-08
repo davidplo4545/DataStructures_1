@@ -591,7 +591,7 @@ void AVLTree<Key,Value>::createTreeFromArray(TreeNode<Key,Value>* arr[], int siz
 
     m_root = arrayToTreeAux(arr, 0, size - 1);
     m_topNode = arr[size-1];
-
+    if(size == 1) return;
     for(int i=0;i<size;i++)
     {
         if(i != 0 && i != size-1)

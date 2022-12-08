@@ -271,23 +271,7 @@ StatusType world_cup_t::unite_teams(int teamId1, int teamId2, int newTeamId)
     if(!teamNode1 || !teamNode2 || (newTeamNode!=nullptr && (newTeamId != teamId1 && newTeamId != teamId2))) return StatusType::FAILURE;
     Team* team1 = teamNode1->m_data;
     Team* team2 = teamNode2->m_data;
-    // empty team checks
-//    if(team1->getPlayersCount() == 0)
-//    {
-//        if(newTeamId == teamId1)
-//        {
-//
-//        }
-//        team2->updateStrength(team1->getPoints(),0);
-//        remove_team(teamId1);
-//        return StatusType::SUCCESS;
-//    }
-//    else if(team2->getPlayersCount() == 0)
-//    {
-//        team1->updateStrength(team2->getPoints(),0);
-//        remove_team(teamId2);
-//        return StatusType::SUCCESS;
-//    }
+
     TreeNode<int,Player*>** playersArr1 = new TreeNode<int,Player*>*[team1->getPlayersCount()];
     TreeNode<int,Player*>** playersArr2 = new TreeNode<int,Player*>*[team2->getPlayersCount()];
     TreeNode<int,Player*>** playersArrNew = new TreeNode<int,Player*>*[team1->getPlayersCount() + team2->getPlayersCount()];
