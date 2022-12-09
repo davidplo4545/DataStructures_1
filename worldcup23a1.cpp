@@ -161,7 +161,6 @@ StatusType world_cup_t::remove_player(int playerId)
     }
 
     delete player;
-
     return StatusType::SUCCESS;
 }
 

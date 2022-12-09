@@ -86,7 +86,7 @@ void Team::updateStatsFromTeams(Team *t1, Team *t2) {
     m_points = t1->m_points + t2->m_points;
     m_playersNum = t1->m_playersNum + t2->m_playersNum;
     m_goalKeepersNum = t1->m_goalKeepersNum + t2->m_goalKeepersNum;
-    m_gamesPlayed = t1->m_gamesPlayed + t2->m_gamesPlayed;
+    m_gamesPlayed = 0;
 }
 bool Team::canBeDeleted() const { return (m_playersNum == 0 || m_shouldBeDeleted);}
 
@@ -126,8 +126,7 @@ void Team::removePlayer(Player *player) {
     m_playersTree->deleteByKey(player->getId());
 
     m_playersNum-=1;
-    updateStrength(player->getGoals(),player->getCards());
-
+    m_strength -= player->getGoals() - player->getCards();
 }
 
 void Team::updateStrength(int goals, int cards) {
@@ -198,6 +197,12 @@ void Team::createPlayerTrees(TreeNode<int,Player*>* playersArr[],TreeNode<Player
 void Team::getSortedPlayersArray(TreeNode<int,Player*> **playerNodes, TreeNode<Player,Player*> **rankedPlayerNodes) {
     m_playersTree->treeToArray(playerNodes);
     m_rankedPlayersTree->treeToArray(rankedPlayerNodes);
+
+    // Update player's games played here:
+    for(int i=0;i<m_playersNum;i++)
+    {
+        playerNodes[i]->m_data->updateGamesPlayedByFactor(-m_gamesPlayed);
+    }
 }
 
 bool operator>(const Team& t1, const Team& t2)
