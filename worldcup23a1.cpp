@@ -80,7 +80,7 @@ StatusType world_cup_t::add_player(int playerId, int teamId, int gamesPlayed,
     if(!bad_inputs)
         if (isFoundNode != nullptr || isFoundTeam == nullptr)
         {
-        return StatusType::FAILURE;
+            return StatusType::FAILURE;
         }
 
     try{
@@ -107,7 +107,7 @@ StatusType world_cup_t::add_player(int playerId, int teamId, int gamesPlayed,
     }
     catch (std::bad_alloc &e) {
         return StatusType::ALLOCATION_ERROR;
-        }
+    }
 
     return StatusType::SUCCESS;
 }
@@ -118,7 +118,7 @@ StatusType world_cup_t::remove_player(int playerId)
 {
     Team* team;
     Player* player;
-     if(playerId <= 0)
+    if(playerId <= 0)
         return StatusType::INVALID_INPUT;
     try{
         try{
@@ -165,7 +165,7 @@ StatusType world_cup_t::remove_player(int playerId)
 }
 
 StatusType world_cup_t::update_player_stats(int playerId, int gamesPlayed,
-                                        int scoredGoals, int cardsReceived)
+                                            int scoredGoals, int cardsReceived)
 {
     if(playerId <= 0 || gamesPlayed < 0 || scoredGoals < 0 || cardsReceived < 0)
         return StatusType::INVALID_INPUT;
@@ -227,14 +227,14 @@ StatusType world_cup_t::play_match(int teamId1, int teamId2)
         team1->updatePointsAfterGame(1);
         team2->updatePointsAfterGame(1);
     }
-	return StatusType::SUCCESS;
+    return StatusType::SUCCESS;
 }
 
 output_t<int> world_cup_t::get_num_played_games(int playerId)
 {
     if(playerId <= 0)
         return output_t<int>(StatusType::INVALID_INPUT);
-	TreeNode<int, Player*>*  playerNode= m_playersTree->find(playerId);
+    TreeNode<int, Player*>*  playerNode= m_playersTree->find(playerId);
     if(!playerNode) return output_t<int>(StatusType::FAILURE);
     Player* player = playerNode->m_data;
 
@@ -384,7 +384,7 @@ StatusType world_cup_t::get_all_players(int teamId, int *const output)
         i--;
         topNode = topNode->m_closeBelow;
     }
-	return StatusType::SUCCESS;
+    return StatusType::SUCCESS;
 }
 
 output_t<int> world_cup_t::get_closest_player(int playerId, int teamId)
@@ -410,17 +410,26 @@ output_t<int> world_cup_t::knockout_winner(int minTeamId, int maxTeamId)
 {
     if(minTeamId<0 || maxTeamId <0 || minTeamId > maxTeamId)
         return output_t<int>(StatusType::INVALID_INPUT);
-	Team** tempValidTeams = new Team*[m_validTeamsNum];
-    TreeNode<int,Team*>* currNode = m_validTeamsTree->getTopNode();
+    TreeNode<int,Team*>* currNode = m_validTeamsTree->findClosestToMinNode(minTeamId);
+    if(currNode == nullptr) return output_t<int>(StatusType::FAILURE);
+    Team* teamMin = currNode->m_data;
+    if(teamMin->getId() > maxTeamId || teamMin->getId() < minTeamId || (teamMin->getId() == maxTeamId && !(teamMin->isInRanked())))
+    {
+        return output_t<int>(StatusType::FAILURE);
+    }
+
+    Team** tempValidTeams = new Team*[m_validTeamsNum];
+
+//    TreeNode<int,Team*>* currNode = m_validTeamsTree->getTopNode();
     int currSize=0;
-    while(currNode!=nullptr && currNode->m_key >= minTeamId && currSize < m_validTeamsNum) // added currSize < m_validTeamsNum
+    while(currNode!=nullptr && currNode->m_key <= maxTeamId && currSize < m_validTeamsNum) // added currSize < m_validTeamsNum
     {
         if(currNode->m_key <= maxTeamId)
         {
             tempValidTeams[currSize] = new Team (*(currNode->m_data));
             currSize++;
         }
-        currNode = currNode->m_closeBelow;
+        currNode = currNode->m_closeAbove;
     }
 
     if(currSize ==0) {
@@ -434,7 +443,7 @@ output_t<int> world_cup_t::knockout_winner(int minTeamId, int maxTeamId)
     // reversing the array (from low to high)
     for(int j=0;j<currSize;j++)
     {
-        validTeams[j] = tempValidTeams[currSize-j-1];
+        validTeams[j] = tempValidTeams[j];
     }
 
     int mult = 1;
@@ -458,4 +467,3 @@ output_t<int> world_cup_t::knockout_winner(int minTeamId, int maxTeamId)
 
     return output_t<int>(result);
 }
-

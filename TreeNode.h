@@ -1,7 +1,6 @@
 //
 // Created by david on 11/21/2022.
 //
-#include <memory>
 #include <iostream>
 
 #ifndef WET1_TREENODE_H

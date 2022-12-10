@@ -178,12 +178,12 @@ void Team::addPlayerToRanked(Player *player) {
     }
 }
 
-void Team::printTeamPlayers() const {
-//    std::cout << "Normal Tree" << std::endl;
-//    m_playersTree->printBT();
-    std::cout << "Ranked Tree of team:" << m_id << std::endl;
-    m_rankedPlayersTree->printBT();
-}
+//void Team::printTeamPlayers() const {
+////    std::cout << "Normal Tree" << std::endl;
+////    m_playersTree->printBT();
+//    std::cout << "Ranked Tree of team:" << m_id << std::endl;
+//    m_rankedPlayersTree->printBT();
+//}
 
 void Team::createPlayerTrees(TreeNode<int,Player*>* playersArr[],TreeNode<Player,Player*>* rankedPlayersArr[])
 {

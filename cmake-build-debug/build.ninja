@@ -67,18 +67,6 @@ build CMakeFiles/untitled1.dir/Player.cpp.obj: CXX_COMPILER__untitled1_Debug C$:
   OBJECT_DIR = CMakeFiles\untitled1.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled1.dir
 
-build CMakeFiles/untitled1.dir/Tests/PlayerTests.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/david/Desktop/DataStruct/untitled1/Tests/PlayerTests.cpp || cmake_object_order_depends_target_untitled1
-  DEP_FILE = CMakeFiles\untitled1.dir\Tests\PlayerTests.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
-  OBJECT_DIR = CMakeFiles\untitled1.dir
-  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Tests
-
-build CMakeFiles/untitled1.dir/Tests/AVLTreeTests.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/david/Desktop/DataStruct/untitled1/Tests/AVLTreeTests.cpp || cmake_object_order_depends_target_untitled1
-  DEP_FILE = CMakeFiles\untitled1.dir\Tests\AVLTreeTests.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
-  OBJECT_DIR = CMakeFiles\untitled1.dir
-  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Tests
-
 build CMakeFiles/untitled1.dir/Team.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/david/Desktop/DataStruct/untitled1/Team.cpp || cmake_object_order_depends_target_untitled1
   DEP_FILE = CMakeFiles\untitled1.dir\Team.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++11
@@ -91,17 +79,11 @@ build CMakeFiles/untitled1.dir/worldcup23a1.cpp.obj: CXX_COMPILER__untitled1_Deb
   OBJECT_DIR = CMakeFiles\untitled1.dir
   OBJECT_FILE_DIR = CMakeFiles\untitled1.dir
 
-build CMakeFiles/untitled1.dir/Tests/TestMain.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/david/Desktop/DataStruct/untitled1/Tests/TestMain.cpp || cmake_object_order_depends_target_untitled1
-  DEP_FILE = CMakeFiles\untitled1.dir\Tests\TestMain.cpp.obj.d
+build CMakeFiles/untitled1.dir/WorldCupTests/WorldCupTests.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/david/Desktop/DataStruct/untitled1/WorldCupTests/WorldCupTests.cpp || cmake_object_order_depends_target_untitled1
+  DEP_FILE = CMakeFiles\untitled1.dir\WorldCupTests\WorldCupTests.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always -std=gnu++11
   OBJECT_DIR = CMakeFiles\untitled1.dir
-  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Tests
-
-build CMakeFiles/untitled1.dir/Tests/NewTests.cpp.obj: CXX_COMPILER__untitled1_Debug C$:/Users/david/Desktop/DataStruct/untitled1/Tests/NewTests.cpp || cmake_object_order_depends_target_untitled1
-  DEP_FILE = CMakeFiles\untitled1.dir\Tests\NewTests.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always -std=gnu++11
-  OBJECT_DIR = CMakeFiles\untitled1.dir
-  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\Tests
+  OBJECT_FILE_DIR = CMakeFiles\untitled1.dir\WorldCupTests
 
 
 # =============================================================================
@@ -111,7 +93,7 @@ build CMakeFiles/untitled1.dir/Tests/NewTests.cpp.obj: CXX_COMPILER__untitled1_D
 #############################################
 # Link the executable untitled1.exe
 
-build untitled1.exe: CXX_EXECUTABLE_LINKER__untitled1_Debug CMakeFiles/untitled1.dir/TreeNode.cpp.obj CMakeFiles/untitled1.dir/AVLTree.cpp.obj CMakeFiles/untitled1.dir/Player.cpp.obj CMakeFiles/untitled1.dir/Tests/PlayerTests.cpp.obj CMakeFiles/untitled1.dir/Tests/AVLTreeTests.cpp.obj CMakeFiles/untitled1.dir/Team.cpp.obj CMakeFiles/untitled1.dir/worldcup23a1.cpp.obj CMakeFiles/untitled1.dir/Tests/TestMain.cpp.obj CMakeFiles/untitled1.dir/Tests/NewTests.cpp.obj
+build untitled1.exe: CXX_EXECUTABLE_LINKER__untitled1_Debug CMakeFiles/untitled1.dir/TreeNode.cpp.obj CMakeFiles/untitled1.dir/AVLTree.cpp.obj CMakeFiles/untitled1.dir/Player.cpp.obj CMakeFiles/untitled1.dir/Team.cpp.obj CMakeFiles/untitled1.dir/worldcup23a1.cpp.obj CMakeFiles/untitled1.dir/WorldCupTests/WorldCupTests.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\untitled1.dir

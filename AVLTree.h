@@ -5,7 +5,6 @@
 #ifndef WET1_AVLTREE_H
 #define WET1_AVLTREE_H
 #include "TreeNode.h"
-#include <string>
 #include "Exception.h"
 #include <exception>
 
@@ -39,9 +38,10 @@ public:
     Node* getTopNode();
     Node* getRoot();
 
+    Node* findClosestToMinNode(Key minKey);
     Value getClosest(Key key);
-    void printBT(const std::string& prefix,const Node* node, bool isLeft) const;
-    void printBT() const;
+//    void printBT(const std::string& prefix,const Node* node, bool isLeft) const;
+//    void printBT() const;
     void treeToArray(Node* arr []);
 
     void rotateR(Node* node);
@@ -248,6 +248,29 @@ TreeNode<Key,Value>* AVLTree<Key,Value>::insert(Key key, Value data) {
         }
     }
     return newNode;
+}
+
+template<class Key, class Value>
+TreeNode<Key,Value>* AVLTree<Key,Value>::findClosestToMinNode(Key minKey) {
+    Node *prevNode = m_root;
+    Node *currNode = m_root;
+    // searches for the node to be deleted
+    while (currNode != nullptr) {
+        if (minKey == currNode->m_key)
+            return currNode;
+        if(currNode->m_key > minKey)
+        {
+            prevNode = currNode;
+
+        }
+        if (currNode->m_key > minKey)
+        {
+            currNode = currNode->m_leftSon;
+        }
+        else
+            currNode = currNode->m_rightSon;
+    }
+    return prevNode;
 }
 
 template<class Key, class Value>
@@ -504,26 +527,26 @@ void AVLTree<Key,Value>::rotateL(Node* node){
 
 
 // PRINT THE DAMN TREE
-template<class Key, class Value>
-void AVLTree<Key,Value>::printBT(const std::string& prefix, const Node* node, bool isLeft) const
-{
-    if (node != nullptr)
-    {
-        std::cout << prefix;
-        std::cout << (isLeft ? "|--" : "L--");
-        // print the value of the node
-        std::cout << node->m_key  << " Height: "<< node->m_height << std::endl;
-        // enter the next tree level - left and right branch
-        printBT(prefix + (isLeft ? "|   " : "    "), node->m_rightSon, true);
-        printBT(prefix + (isLeft ? "|   " : "    "), node->m_leftSon, false);
-    }
-}
-
-template<class Key, class Value>
-void AVLTree<Key,Value>::printBT() const
-{
-    printBT("", m_root, false);
-}
+//template<class Key, class Value>
+//void AVLTree<Key,Value>::printBT(const std::string& prefix, const Node* node, bool isLeft) const
+//{
+//    if (node != nullptr)
+//    {
+//        std::cout << prefix;
+//        std::cout << (isLeft ? "|--" : "L--");
+//        // print the value of the node
+//        std::cout << node->m_key  << " Height: "<< node->m_height << std::endl;
+//        // enter the next tree level - left and right branch
+//        printBT(prefix + (isLeft ? "|   " : "    "), node->m_rightSon, true);
+//        printBT(prefix + (isLeft ? "|   " : "    "), node->m_leftSon, false);
+//    }
+//}
+//
+//template<class Key, class Value>
+//void AVLTree<Key,Value>::printBT() const
+//{
+//    printBT("", m_root, false);
+//}
 
 template<class Key, class Value>
 void AVLTree<Key,Value>::treeToArrayAux(Node* node, Node* arr [], int* index) //check
